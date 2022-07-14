@@ -1,5 +1,9 @@
 # PROJECT-3
 # Radon
+# for AWS S3 service 
+-  how to upload a file
+- step1: postman/frontend sends a file to our node server in an API call 
+- step2: Multer is able to grab that file and make it available to node server step3: uploading this file to AWS S3
 
 ## Project - Books Management
 
