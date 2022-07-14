@@ -144,7 +144,7 @@ const createUser = async function (req, res) {
     }
 
     let userSaved = await userModel.create(requestBody);
-    res
+    return res
       .status(201)
       .send({
         status: true,
@@ -152,7 +152,7 @@ const createUser = async function (req, res) {
         data: userSaved,
       });
   } catch (error) {
-    res.status(500).send({ status: false, message: error.message });
+    return res.status(500).send({ status: false, message: error.message });
   }
 };
 
@@ -203,7 +203,7 @@ const loginUser = async function (req, res) {
     // <-------generate JWT Token and valid for 100 Minutes--------------->
     let payload = {
       userId: validUser._id,
-      exp: Math.floor(Date.now() / 1000) + 100 * 60,
+      exp: Math.floor(Date.now() / 1000) + (100 * 60),
       iat: Date.now() / 1000,
     };
     let token = jwt.sign(payload, "project3");
@@ -221,7 +221,7 @@ const loginUser = async function (req, res) {
         },
       });
   } catch (error) {
-    res.status(500).send({ status: false, message: error.message });
+    return res.status(500).send({ status: false, message: error.message });
   }
 };
 

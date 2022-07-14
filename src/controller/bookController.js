@@ -179,7 +179,7 @@ const getBooks = async function (req, res) {
         .status(404)
         .send({ status: false, message: "No Book found with given filter(s)" });
     else
-      return res.send({ status: true, message: "Book List", data: findBook });
+      return res.status(200).send({ status: true, message: "Book List", data: findBook });
   } catch (error) {
     return res.status(500).send({ status: false, message: error.message });
   }
@@ -342,7 +342,6 @@ const deleteBook = async function (req, res) {
         .send({ status: false, message: "the book is already deleted" });
     }
   } catch (error) {
-    console.log(error);
     res.status(500).send({ status: false, message: error.message });
   }
 };

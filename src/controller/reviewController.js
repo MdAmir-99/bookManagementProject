@@ -114,7 +114,7 @@ const updateReview = async function (req, res) {
       return res.status(400).send({ status: false, message: "invalid request for review" });
 
     if (!validator.isValidReview(review))
-      return res.status(400).send({ status: false, message: "rating must be from 1 to 5" })
+      return res.status(400).send({ status: false, message: "review is not valid !!" })
     }
     // <------------Validation for bookId && reviewId------------->
     if (!validator.isValidObjectId(bookId))
