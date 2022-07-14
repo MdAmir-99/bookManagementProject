@@ -18,10 +18,12 @@
   },
   "homepage": "https://github.com/manju349/PROJECT-3#readme",
   "dependencies": {
+    "aws-sdk": "^2.1175.0",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.4.3",
+    "multer": "^1.4.5-lts.1",
     "nodemon": "^2.0.19"
   }
 }

@@ -2,11 +2,20 @@ const bookModel = require("../model/bookModel");
 const reviewModel = require("../model/reviewModel");
 const validator = require("../validator/validator");
 const mongoose = require("mongoose");
+const {uploadFile} = require("../aws/awsFileUpload")
 
 // CREATE BOOK
 const createBook = async function (req, res) {
   try {
     let requestBody = req.body;
+    let files = req.files
+    // <----------Files in the Array format---------->
+        if(files && files.length>0){
+            //upload to s3 and get the uploaded link
+            // res.send the link back to frontend/postman
+            let uploadedFileURL= await uploadFile( files[0] )
+            requestBody['bookCover'] = uploadedFileURL;
+        }
     let { title, excerpt, userId, ISBN, category, subcategory, releasedAt } =
       requestBody;
     // <------------BODY VALIDATION----------------->
